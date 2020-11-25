@@ -7,13 +7,13 @@
   <div [@menu]="current" class="navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="/auth/login-admin">تسجيل الدخول</a>
+        <a *ngIf="!authService.isAdmin()" class="nav-link" routerLink="/auth/login-admin">تسجيل الدخول</a>
       </li>
       <li class="nav-item">
-        <a *ngIf="authService.isLoggedIn()" (click)="authService.userLogout()" class="nav-link" routerLink="/auth/login-admin">تسجيل الخروج</a>
+        <a *ngIf="authService.isAdmin()" (click)="authService.userLogout()" class="nav-link" routerLink="/auth/login-admin">تسجيل الخروج</a>
       </li>
       <li class="nav-item">
-        <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/dashboard">لوحه التحكم</a>
+        <a *ngIf="authService.isAdmin()" class="nav-link" routerLink="/dashboard">لوحه التحكم</a>
       </li>
       <li class="nav-item">
         <a color="warn" class="nav-link" routerLink="/audio/all-audios">قرأن كريم</a>
