@@ -37,6 +37,6 @@
 
 @media (max-width: 575.98px) {
   ::ng-deep .cdk-overlay-pane {
-    max-width: 100vw;
+    max-width: 100vw !important;
   }
 }
