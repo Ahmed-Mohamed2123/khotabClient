@@ -1,0 +1,47 @@
+.add-video {
+  width: 400px;
+  margin: auto;
+  .example-form {
+    min-width: 150px;
+    max-width: 350px;
+    width: 100%;
+  }
+
+  .custom-file {
+    .custom-file-label {
+      padding-right: 135px;
+      direction: rtl;
+      &::after {
+        content: "تصفح الفيديوهات";
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+  .fileOne {
+    .custom-file-label {
+      padding-right: 105px;
+      &::after {
+        content: "تصفح الصور";
+      }
+    }
+  }
+
+  .content-alert {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .custom-file  input:focus ~ label, input:valid ~ label {
+    top: 0;
+    font-size: 15px;
+  }
+
+}
+
+@media (max-width: 630px) {
+  .add-video {
+    width: 100%;
+  }
+}

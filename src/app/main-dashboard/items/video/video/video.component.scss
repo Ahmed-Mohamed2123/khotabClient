@@ -1,0 +1,25 @@
+::ng-deep mat-paginator {
+  direction: ltr !important;
+  margin-top: 25px;
+  background-color: transparent !important;
+  .mat-paginator-container {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .flex-button {
+    flex-direction: column;
+    .two {
+      margin-top: 10px;
+      button {
+        width: 100%;
+        text-align: right;
+      }
+    }
+  }
+  .audios {
+    padding-top: 0px !important;
+  }
+
+}

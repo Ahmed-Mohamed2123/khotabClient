@@ -1,0 +1,32 @@
+.content {
+  .content-search {
+    width: 230px;
+  }
+  .content-menu {
+    background-color: #FFF;
+      transform: translateY(4px);
+      box-shadow: 0 0 4px #DDD;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    .mat-menu {
+      // direction: rtl;
+      ::ng-deep .mat-icon-button {
+        margin-bottom: 9px !important;
+        outline: none;
+      }
+    }
+  }
+  ::ng-deep mat-paginator {
+    direction: ltr !important;
+    background: transparent;
+    margin-top: 25px;
+    .mat-paginator-container {
+      justify-content: center !important;
+    }
+  }
+}
+
+::ng-deep mat-card {
+  background-color: #FFF !important;
+
+}

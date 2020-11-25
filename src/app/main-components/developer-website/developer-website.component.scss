@@ -1,0 +1,21 @@
+.content-develop {
+  .container {
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+@media (max-width: 575.98px) {
+  .content-develop {
+    .container {
+      .card {
+        .card-img-top {
+          height: 346px;
+        }
+      }
+    }
+  }
+}

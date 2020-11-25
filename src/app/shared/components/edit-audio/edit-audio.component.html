@@ -1,0 +1,44 @@
+<div class="edit-audio">
+  <h2 mat-dialog-title>
+    تحديث المقطع الصوتى
+  </h2>
+  <mat-dialog-content class="mat-typography">
+
+    <form [formGroup]="updateAudioDto" (ngSubmit)="editAudio()" novalidate>
+
+      <div class="form-group">
+        <input formControlName="title" type="text" class="form-control text-right" placeholder="اسم المقطع الصوتى" required>
+      </div>
+
+      <div class="form-group">
+        <input formControlName="description" type="text" class="form-control text-right" placeholder="معلومات اضافيه توضيحيه">
+      </div>
+
+      <div class="form-group">
+        <div class="custom-file">
+          <input type="file" accept="audio/*" class="custom-file-input" id="audio" formControlName="audio"
+                  ng2FileSelect
+                  [uploader]="uploader" (change)="onSourceSelect($event)">
+          <label class="custom-file-label" for="audio">{{selectedAudio}}</label>
+        </div>
+      </div>
+
+      <button style="width: 120px;" mat-raised-button color="primary" type="submit">انشاء</button>
+      <div class="row justify-content-center mt-1 mb-1" *ngIf="viewProgressBar">
+        <div class="col-md-10">
+          <p class="lead text-center">
+            انتظر من فضلك
+          </p>
+          <mat-progress-bar class="mt-1 mb-1" mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
+    </form>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button (click)="helperService.hideDialog()"  mat-raised-button color="warn" style="width: 120px;" type="button">
+      اغلاق
+    </button>
+  </mat-dialog-actions>
+
+</div>

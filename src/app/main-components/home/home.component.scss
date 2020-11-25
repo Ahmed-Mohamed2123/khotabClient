@@ -1,0 +1,60 @@
+.home {
+  min-height: 88vh;
+  position: relative;
+  background-image: url(../../../assets/home.jpg);
+  .content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    color: #FFF;
+    .h1-home {
+      line-height: 1.8;
+    }
+    .content-button {
+      margin-top: 50px;
+      button {
+        border: none;
+        border-radius: 12px;
+        width: 180px;
+        height: 50px;
+        background-color: #343a40;
+        color: #FFF;
+        outline: none;
+      }
+      .two {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .home {
+    .content {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .home {
+    .content {
+      .h1-home {
+        font-size: 23px !important;
+      }
+
+    }
+  }
+}
+
+@media (max-width: 379px) {
+  .home {
+    .content-button {
+      .two {
+        margin-right: 0 !important;
+        margin-top: 8px;
+      }
+    }
+  }
+}

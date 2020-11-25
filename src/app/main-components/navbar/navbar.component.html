@@ -1,0 +1,26 @@
+<nav *ngIf="show" class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/home">اسلام</a>
+  <button (click)="menu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [@menu]="current" class="navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="/auth/login-admin">تسجيل الدخول</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="authService.isLoggedIn()" (click)="authService.userLogout()" class="nav-link" routerLink="/auth/login-admin">تسجيل الخروج</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/dashboard">لوحه التحكم</a>
+      </li>
+      <li class="nav-item">
+        <a color="warn" class="nav-link" routerLink="/audio/all-audios">قرأن كريم</a>
+      </li>
+      <li class="nav-item">
+        <a color="warn" class="nav-link" routerLink="/video/all-videos">خطب</a>
+      </li>
+    </ul>
+  </div>
+</nav>

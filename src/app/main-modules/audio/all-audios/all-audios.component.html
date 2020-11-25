@@ -1,0 +1,52 @@
+<div class="content container-fluid">
+  <div class="content-search pt-4">
+      <input type="text" class="form-control" placeholder="البحث عن الخطبه" [(ngModel)]="searchTerm" name="searchTerm">
+  </div>
+
+  <div class="content-audio">
+    <div class="row">
+      <div class="col-md-6 col-lg-4 pt-3" *ngFor="let audio of audios | audiosFilter: searchTerm">
+        <div class="content-menu d-flex justify-content-between" style="align-items: center;">
+          <div class="one">
+            <p style="margin-bottom: 0; margin-right: 10px;">
+              {{audio.title}}
+            </p>
+          </div>
+          <div class="mat-menu">
+            <button  mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu>
+              <a [href]="audio.audio" mat-menu-item download>download</a>
+            </mat-menu>
+          </div>
+        </div>
+        <mat-basic-audio-player
+                [audioUrl]="audio.audio"
+                [autoPlay]="false"
+                [displayVolumeControls]="true"></mat-basic-audio-player>
+        <div class="pt-2" style="margin: 0;">
+          <p style="margin: 0;">{{audio.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="totalPost > 18">
+    <mat-paginator [length]="totalPost"
+    [pageSize]="postsPerPage"
+    [pageSizeOptions]="pageSizeOption"
+    (page)="onChangePage($event)">
+    </mat-paginator>
+  </div>
+
+  <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="large"
+    color="#9344d4d"
+    type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">
+      {{state}}
+    </p>
+  </ngx-spinner>
+</div>
+

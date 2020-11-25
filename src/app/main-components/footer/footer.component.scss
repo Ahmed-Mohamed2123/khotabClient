@@ -1,0 +1,30 @@
+.footer {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #FFF;
+  box-shadow: 0 0 24px #DDD;
+  color: #FFF;
+  p {
+    margin-bottom: 0;
+    color: #000;
+  }
+  .content {
+    .developer {
+      margin-bottom: 0;
+      span {
+        cursor: pointer;
+        // &:hover {
+
+        // }
+      }
+    }
+  }
+  @media (max-width: 575.98px) {
+    .oneFooter {
+      text-align: center !important;
+    }
+    .twoFooter {
+      text-align: center !important;
+    }
+  }
+}

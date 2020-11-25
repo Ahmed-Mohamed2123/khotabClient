@@ -1,0 +1,58 @@
+<div class="Audio">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between flex-button">
+      <div class="one">
+        <input type="text" class="form-control"
+        placeholder="البحث فى المقاطع الصوتيه" name="searchTerm" [(ngModel)]="searchTerm">
+      </div>
+      <div class="two">
+        <button class="btn btn-primary" (click)="helperService.openDialog(name)">انشاء مقطع صوتى</button>
+      </div>
+    </div>
+
+    <div class="audios pt-5">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 pt-4" *ngFor="let audio of audios | audiosFilter: searchTerm">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{audio.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{audio.description}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="helperService.openDialog(updateAudioTemplate)">تعديل</button>
+              <button (click)="deleteAudio(audio._id)" mat-button>حذف</button>
+            </mat-card-actions>
+            <ng-template #updateAudioTemplate>
+              <app-edit-audio [audio]="audio" [audios]="audios"
+                             (change)="refreshContentEdit(audios)"></app-edit-audio>
+            </ng-template>
+          </mat-card>
+        </div>
+      </div>
+      <div *ngIf="totalPost > 17">
+          <mat-paginator [length]="totalPost"
+          [pageSize]="postsPerPage"
+          [pageSizeOptions]="pageSizeOption"
+          (page)="onChangePage($event)">
+          </mat-paginator>
+      </div>
+    </div>
+  </div>
+
+  <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="large"
+    color="#9344d4d"
+    type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">
+      {{state}}
+    </p>
+  </ngx-spinner>
+</div>
+<ng-template #name>
+  <app-add-audio [audioInfo]="audios"
+  [startRefresh]="startRefresh"
+  (change)="refreshAudios({startRefresh: startRefresh})"></app-add-audio>
+</ng-template>

@@ -1,0 +1,96 @@
+<div class="align">
+
+  <div class="grid">
+
+    <div id="login">
+
+      <h2><span class="fontawesome-lock"></span>تسجيل الدخول</h2>
+
+      <form [formGroup]="loginDto" (ngSubmit)="adminLogin()" novalidate>
+
+        <fieldset>
+
+          <p style="direction: ltr; text-align: left;">ADMIN:_ mohamed0aziz0ahmed@gmail.com</p>
+          <p style="direction: ltr; text-align: left;">Password:_ Aa6911424@</p>
+          <p><label for="email">الايميل</label></p>
+          <p><input formControlName="email" type="email" id="email" placeholder="mail@address.com" required></p>
+
+          <p><label for="password">كلمه السر</label></p>
+          <p><input formControlName="password" type="password" id="password" placeholder="password" required></p>
+
+          <div class="forgot-password">
+            <p (click)="openDialog(forgotPass)">هل نسيت كلمه المرور!</p>
+          </div>
+
+          <div class="content-alert">
+            <div class="alert alert-danger" *ngIf="loginDto.get('email').touched && !loginDto.get('email').valid">
+              <div *ngIf="loginDto.get('email').errors.required">البريد الالكتروني مطلوب</div>
+              <div *ngIf="loginDto.get('email')?.errors['pattern']">البريد الإلكتروني لا يتطابق مع النمط المطلوب</div>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="loginDto.get('password').touched && !loginDto.get('password').valid">
+              <div *ngIf="loginDto.get('password').errors.required">الباسورد مطلوب</div>
+              <div *ngIf="loginDto.get('password')?.errors['minlength']">الباسورد ينبغى ان لا يقل عن ستة قيم</div>
+              <div *ngIf="loginDto.get('password')?.errors['pattern']">الباسورد لا يتطابق مع النمط المطلوب</div>
+            </div>
+          </div>
+
+          <p><input [disabled]="loginDto.invalid" class="btn-block" type="submit" value="تسجيل الدخول"></p>
+
+        </fieldset>
+
+      </form>
+
+    </div> <!-- end login -->
+
+  </div>
+
+  <ng-template #forgotPass>
+    <form [formGroup]="forgotDto" (ngSubmit)="sentEmailForgotPassword()">
+      <h2 mat-dialog-title>
+        أدخل بريدك الإلكتروني لإرسال طلب نسيت كلمة المرور
+      </h2>
+      <mat-dialog-content class="mat-typography">
+        <div *ngIf="!isSent" class="row mb-1 mt-1 justify-content-center">
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input formControlName="email" type="email" name="email" matInput
+                    required>
+            <p class="text-danger" *ngIf="forgotDto.dirty && forgotDto.errors?.email">
+              بريد إلكتروني غير صحيح ، يرجى تقديم بريد إلكتروني صالح!
+          </mat-form-field>
+
+        </div>
+        <div *ngIf="!isSent" class="row mb-1 mt-1 justify-content-center">
+          <button type="submit" (click)="sentEmailForgotPassword()" [disabled]="!forgotDto.valid" mat-raised-button color="primary">
+            ابعت الطلب
+          </button>
+        </div>
+        <div *ngIf="message && isSent" class="row mb-1 mt-1 justify-content-center">
+          <p class="lead text-warning">
+            {{message}}
+          </p>
+        </div>
+      </mat-dialog-content>
+      <mat-progress-bar *ngIf="showProgress" mode="indeterminate"></mat-progress-bar>
+      <mat-dialog-actions align="end">
+        <button style="width: 120px" (click)="hideDialog()"
+                class="btn btn-outline-warning pull-right">
+          اغلاق
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </ng-template>
+
+</div>
+
+<ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="large"
+    color="#9344d4d"
+    type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">
+      {{state}}
+    </p>
+  </ngx-spinner>

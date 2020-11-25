@@ -1,0 +1,54 @@
+<div class="edit-video">
+  <h2 mat-dialog-title>
+    تحديث الفيديو
+  </h2>
+  <mat-dialog-content class="mat-typography">
+
+    <form [formGroup]="updateVideoDto" (ngSubmit)="editVideo()" novalidate>
+
+      <div class="form-group">
+        <input formControlName="title" type="text" class="form-control text-right" placeholder="اسم الفيديو" required>
+      </div>
+
+      <div class="form-group">
+        <input formControlName="description" type="text" class="form-control text-right" placeholder="معلومات اضافيه توضيحيه">
+      </div>
+
+      <div class="form-group">
+        <div class="custom-file fileOne">
+          <input type="file" accept="image/*" class="custom-file-input" id="image" formControlName="image"
+                  ng2FileSelect
+                  [uploader]="uploaderImage" (change)="onSourceImgVideoSelect($event)">
+          <label class="custom-file-label" for="image">{{selectedImgVideo}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="custom-file fileTwo">
+          <input type="file" accept="video/*" class="custom-file-input" id="video" formControlName="video"
+                  ng2FileSelect
+                  [uploader]="uploaderVideo" (change)="onSourceVideoSelect($event)">
+          <label class="custom-file-label" for="video">{{selectedVideo}}</label>
+        </div>
+      </div>
+
+      <button style="width: 120px;" mat-raised-button color="primary" type="submit">انشاء</button>
+
+      <div class="row justify-content-center mt-1 mb-1" *ngIf="viewProgressBar">
+        <div class="col-md-10">
+          <p class="lead text-center">
+            انتظر من فضلك
+          </p>
+          <mat-progress-bar class="mt-1 mb-1" mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
+    </form>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button (click)="helperService.hideDialog()"  mat-raised-button color="warn" style="width: 120px;" type="button">
+      اغلاق
+    </button>
+  </mat-dialog-actions>
+
+</div>

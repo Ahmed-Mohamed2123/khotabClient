@@ -1,0 +1,35 @@
+::ng-deep mat-video {
+  direction: ltr !important;
+}
+.content {
+  .content-search {
+    width: 230px;
+  }
+  .content-img {
+    width: 100%;
+    height: 400px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .img-play {
+      width: 64px;
+      height: 64px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+  ::ng-deep mat-paginator {
+    direction: ltr !important;
+    margin-top: 25px;
+    background: transparent;
+    .mat-paginator-container {
+      justify-content: center !important;
+    }
+  }
+}

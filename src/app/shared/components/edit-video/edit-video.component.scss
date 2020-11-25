@@ -1,0 +1,40 @@
+.edit-video {
+  width: 400px;
+  margin: auto;
+  .example-form {
+    min-width: 150px;
+    max-width: 350px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+
+  .custom-file {
+    .custom-file-label {
+      padding-right: 135px;
+      direction: rtl;
+      &::after {
+        content: "تصفح الفيديوهات";
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+  .fileOne {
+    .custom-file-label {
+      padding-right: 105px;
+      &::after {
+        content: "تصفح الصور";
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .edit-video {
+    width: 100%;
+  }
+}

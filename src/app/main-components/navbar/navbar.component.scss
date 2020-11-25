@@ -1,0 +1,20 @@
+.navbar {
+  background-color: #FFF !important;
+  box-shadow: 0 0 24px #DDD;
+  overflow: hidden;
+  .nav-link {
+    background-color: #343a40;
+    color: #FFF !important;
+    margin-right: 5px;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    .nav-link {
+      background-color: #FFF !important;
+      color: #000 !important;
+    }
+  }
+}
