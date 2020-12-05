@@ -58,10 +58,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
       useClass: ErrorInterceptorService,
       multi: true
     },
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    },
     CookieService
   ],
   bootstrap: [AppComponent]
